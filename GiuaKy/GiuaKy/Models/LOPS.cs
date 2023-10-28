@@ -15,6 +15,6 @@ namespace GiuaKy.Models
         [Display(Name = "Tên lớp")]
         public string tenlop { get; set; }
 
-        public ICollection<SINHVIENS> sinhvien { get; set; }
+        public virtual ICollection<SINHVIENS> sinhvien { get; set; }
     }
 }

@@ -83,4 +83,3 @@ E:\HK1_Nam3\PTUngDungWeb\ThucHanh\KiemTra\KT_GK_PTUW\GiuaKy\GiuaKy\obj\Debug\Giu
 E:\HK1_Nam3\PTUngDungWeb\ThucHanh\KiemTra\KT_GK_PTUW\GiuaKy\GiuaKy\obj\Debug\GiuaKy.pdb
 E:\HK1_Nam3\PTUngDungWeb\ThucHanh\KiemTra\KT_GK_PTUW\GiuaKy\GiuaKy\obj\Debug\GiuaKy.Migrations.database.resources
 E:\HK1_Nam3\PTUngDungWeb\ThucHanh\KiemTra\KT_GK_PTUW\GiuaKy\GiuaKy\obj\Debug\GiuaKy.csproj.GenerateResource.cache
-E:\HK1_Nam3\PTUngDungWeb\ThucHanh\KiemTra\KT_GK_PTUW\GiuaKy\GiuaKy\obj\Debug\GiuaKy.Migrations.fk.resources

@@ -39,6 +39,7 @@ namespace GiuaKy.Controllers
         // GET: SINHVIEN/Create
         public ActionResult Create()
         {
+            ViewBag.malop = new SelectList(db.lop, "malop", "tenlop");
             return View();
         }
 
@@ -51,6 +52,15 @@ namespace GiuaKy.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Kiểm tra xem mã sinh viên đã tồn tại hay chưa
+                bool check = db.sinhvien.Any(nv => nv.masv == sINHVIENS.masv);
+
+                if (check)
+                {
+                    // Mã sinh viên đã tồn tại, hiển thị thông báo lỗi
+                    ModelState.AddModelError("masv", "Mã sinh viên đã tồn tại.");
+
+                }
                 //Xử lý thông tin cho hình ảnh
                 var img = Request.Files["Img"];//lay thong tin file
                 if (img.ContentLength != 0)
@@ -60,7 +70,7 @@ namespace GiuaKy.Controllers
                     if (FileExtentions.Contains(img.FileName.Substring(img.FileName.LastIndexOf("."))))//lay phan mo rong cua tap tin
                     {
                         string masv = sINHVIENS.masv;
-                        //ten file = Slug + phan mo rong cua tap tin
+                        //ten file = imgName + phan mo rong cua tap tin
                         string imgName = masv + img.FileName.Substring(img.FileName.LastIndexOf("."));
                         sINHVIENS.anhsv = imgName;
                         //upload hinh
@@ -73,7 +83,7 @@ namespace GiuaKy.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.malop = new SelectList(db.lop, "malop", "tenlop");
             return View(sINHVIENS);
         }
 

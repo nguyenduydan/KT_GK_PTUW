@@ -33,7 +33,7 @@ namespace GiuaKy.Models
         //foreign key
         [Display(Name = "Lớp")]
         public string malop { get; set; }
-        public LOPS  LOPS { get; set; }
+        public virtual LOPS  LOPS { get; set; }
         
 
     }

@@ -138,10 +138,6 @@
     <Compile Include="Migrations\202310280417221_database.designer.cs">
       <DependentUpon>202310280417221_database.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202310280943527_fk.cs" />
-    <Compile Include="Migrations\202310280943527_fk.designer.cs">
-      <DependentUpon>202310280943527_fk.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LOPS.cs" />
     <Compile Include="Models\MyDB.cs" />
@@ -249,9 +245,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202310280417221_database.resx">
       <DependentUpon>202310280417221_database.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202310280943527_fk.resx">
-      <DependentUpon>202310280943527_fk.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
