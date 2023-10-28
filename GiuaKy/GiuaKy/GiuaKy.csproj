@@ -208,7 +208,7 @@
     <Content Include="Views\SINHVIEN\Create.cshtml" />
     <Content Include="Views\SINHVIEN\GioiThieu_SV.cshtml" />
     <Content Include="Views\SINHVIEN\Details.cshtml" />
-    <Content Include="Views\SINHVIEN\Edit.cshtml" />
+    <Content Include="Views\SINHVIEN\FindID.cshtml" />
     <Content Include="Views\SINHVIEN\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

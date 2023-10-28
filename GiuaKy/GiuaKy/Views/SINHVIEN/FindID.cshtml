@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<GiuaKy.Models.SINHVIENS>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tìm kiếm sinh viên";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section header{
@@ -19,10 +19,22 @@
         });
     </script>
 }
-@using (Html.BeginForm("Index", "sinhvien", FormMethod.Get))
+@using (Html.BeginForm("FindID", "sinhvien", FormMethod.Post))
 {
     <div class="wrapper">
         <!-- Main Sidebar Container -->
+        <div class="card">
+            <div class="card-body">
+                <div class="input-group">
+                    <input type="text" id="searchId" name="filter" class="form-control" placeholder="Nhập tên nhân viên" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Main content -->

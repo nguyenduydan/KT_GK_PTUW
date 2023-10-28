@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using GiuaKy.Models;
+using static System.Net.WebRequestMethods;
 
 namespace GiuaKy.Controllers
 {
@@ -89,38 +90,19 @@ namespace GiuaKy.Controllers
             return View(sINHVIENS);
         }
 
-        // GET: SINHVIEN/Edit/5
-        public ActionResult Edit(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            SINHVIENS sINHVIENS = db.sinhvien.Find(id);
-            if (sINHVIENS == null)
-            {
-                return HttpNotFound();
-            }
-            return View(sINHVIENS);
+        //Tìm kiếm sinh viên
+        public ActionResult FindID()
+        { 
+            return View(db.sinhvien.ToList());
         }
 
-        // POST: SINHVIEN/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "masv,hosv,tensv,ngaysinh,gioitinh,anhsv,diachi,malop")] SINHVIENS sINHVIENS)
+        public ActionResult FindID(string filter)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(sINHVIENS).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(sINHVIENS);
+            List<SINHVIENS> listNews = db.sinhvien.Where(m => m.tensv.ToLower().Contains(filter.ToLower()) == true).ToList();
+            return View(filter);
         }
 
-        // GET: SINHVIEN/Delete/5
         public ActionResult GioiThieu_SV()
         {
             return View("GioiThieu_SV");
