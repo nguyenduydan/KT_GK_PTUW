@@ -1,0 +1,59 @@
+﻿@model GiuaKy.Models.SINHVIENS
+
+@{
+    ViewBag.Title = "Thông Tin Chi Tiết";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 d-flex align-items-center">
+            <img src="~/Public/Img/@Model.anhsv" alt="IMG" class="img-fluid rounded-circle" />
+        </div>
+        <div class="col-md-9 fs-3 ">
+            <h1>THÔNG TIN SINH VIÊN</h1>
+            <div class="form-group my-1 ">
+                <label class="col-md-3 col-form-label fw-bold">Mã sinh viên:</label>
+                @Html.DisplayFor(model => model.masv)
+            </div>
+            <div class="form-group my-1 ">
+                <label class="col-md-3 col-form-label fw-bold">Họ sinh viên:</label>
+                @Html.DisplayFor(model => model.hosv)
+            </div>
+            <div class="form-group my-1 ">
+                <label class="col-md-3 col-form-label fw-bold">Tên sinh viên:</label>
+                @Html.DisplayFor(model => model.tensv)
+            </div>
+            <div class="form-group my-1 ">
+                <label class="col-md-3 col-form-label fw-bold">Giới tính:</label>
+                @if (Model.gioitinh == 1)
+                {
+                    <span>Nữ</span>
+                }
+                else if (Model.gioitinh == 0)
+                {
+                    <span>Nam</span>
+                }
+            </div>
+            <div class="form-group my-1 ">
+                <label class="col-md-3 col-form-label fw-bold">Ngày sinh:</label>
+                @{
+                    // Lấy giá trị ngày sinh từ model
+                    DateTime ngaysinh = Model.ngaysinh;
+                    // Định dạng ngày tháng năm
+                    string ngaysinhFormatted = ngaysinh.ToString("dd/MM/yyyy");
+                }
+                @Html.DisplayFor(model => ngaysinhFormatted)
+            </div> 
+            <div class="form-group my-1 ">
+                <label class="col-md-3 col-form-label fw-bold">Địa chỉ:</label>
+                @Html.DisplayFor(model => model.diachi)
+            </div> 
+            <div class="form-group my-1 ">
+                <label class="col-md-3 col-form-label fw-bold">Lớp:</label>
+                @Html.DisplayFor(model => model.malop)
+            </div>
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+﻿@model GiuaKy.Models.SINHVIENS
+
+@{
+    ViewBag.Title = "Thêm mới";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "sinhvien", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container-fluid">
+        <h4>NHẬP THÔNG TIN SINH VIÊN</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="card-body container">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="form-group my-2 ">
+                        @Html.LabelFor(model => model.masv, htmlAttributes: new { @class = "col-md-1 col-form-label fw-bold" })
+                        @Html.EditorFor(model => model.masv, new { htmlAttributes = new { @class = "w-50 form-control d-inline" } })
+                        @Html.ValidationMessageFor(model => model.masv, "", new { @class = "text-danger fst-italic" })
+                    </div>
+
+                    <div class="form-group my-2">
+                        @Html.LabelFor(model => model.hosv, htmlAttributes: new { @class = "col-md-1 col-form-label fw-bold" })
+                        @Html.EditorFor(model => model.hosv, new { htmlAttributes = new { @class = "w-50 form-control d-inline" } })
+                        @Html.ValidationMessageFor(model => model.hosv, "", new { @class = "text-danger fst-italic" })
+                    </div>
+
+                    <div class="form-group my-2">
+                        @Html.LabelFor(model => model.tensv, htmlAttributes: new { @class = "col-md-1 col-form-label fw-bold" })
+                        @Html.EditorFor(model => model.tensv, new { htmlAttributes = new { @class = "w-50 form-control d-inline" } })
+                        @Html.ValidationMessageFor(model => model.tensv, "", new { @class = "text-danger fst-italic" })
+                    </div>
+
+                    <div class="form-group my-2">
+                        @Html.LabelFor(model => model.ngaysinh, htmlAttributes: new { @class = "col-md-1 col-form-label fw-bold" })
+                        @Html.EditorFor(model => model.ngaysinh, new { htmlAttributes = new { @class = "w-50 form-control d-inline" } })
+                        @Html.ValidationMessageFor(model => model.ngaysinh, "", new { @class = "text-danger fst-italic" })
+                    </div>
+
+                    <div class="form-group my-2">
+                        @Html.LabelFor(model => model.gioitinh, htmlAttributes: new { @class = "col-md-1 col-form-label fw-bold" })
+                        <label class="radio-inline mx-3">
+                            Nam @Html.RadioButtonFor(model => model.gioitinh, 0)
+                        </label>
+                        <label class="radio-inline">
+                            Nữ @Html.RadioButtonFor(model => model.gioitinh, 1)
+                        </label>
+                    </div>
+
+                    <div class="form-group my-2">
+                        @Html.LabelFor(model => model.anhsv, htmlAttributes: new { @class = "col-form-label col-auto fw-bold" })
+                        <input type="file" name="img" alt="Hình ảnh" />
+                    </div>
+
+                    <div class="form-group my-2">
+                        @Html.LabelFor(model => model.diachi, htmlAttributes: new { @class = "col-md-1 col-form-label fw-bold" })
+                        @Html.EditorFor(model => model.diachi, new { htmlAttributes = new { @class = "w-50 form-control d-inline" } })
+                    </div>
+
+                    <div class="form-group my-2">
+                        @Html.LabelFor(model => model.malop, htmlAttributes: new { @class = "col-md-1 col-form-label fw-bold" })
+                        @Html.EditorFor(model => model.malop, new { htmlAttributes = new { @class = "w-50 form-control d-inline" } })
+                    </div>
+                    <div class="form-group mt-5">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button class="btn btn-success col-2" type="submit" name="create">[Lưu] Thêm <i class="fa fa-save"></i></button>
+                            <a href=" @Url.Action("Index","sinhvien")" class="btn btn-primary col-2"><i class="fa fa-long-arrow-left"> Quay lại </i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}

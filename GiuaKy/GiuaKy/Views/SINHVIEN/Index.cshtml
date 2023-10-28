@@ -1,0 +1,89 @@
+﻿@model IEnumerable<GiuaKy.Models.SINHVIENS>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section header{
+    <link href="~/Public/css/jquery.dataTables.min.css" rel="stylesheet" />
+}
+
+@section footer{
+    <script src="~/Public/js/jquery.dataTables.min.js"></script>
+    <script>
+        let table = new DataTable('#myTable', {
+            lengthMenu: [
+                [2, -1],
+                [2, 'All']
+            ]
+        });
+    </script>
+}
+<div class="wrapper">
+    <!-- Main Sidebar Container -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Default box -->
+            <div class="card">
+                <div class="card-body">
+                    <!--Hiển thị dòng thông báo-->
+                    <table class="table table-bordered table-striped " id="myTable">
+                        <thead>
+                            <tr class="text-primary">
+                                <th>STT</th>
+                                <th> @Html.DisplayNameFor(model => model.masv) </th>
+                                <th> @Html.DisplayNameFor(model => model.hosv) </th>
+                                <th> @Html.DisplayNameFor(model => model.tensv)</th>
+                                <th> @Html.DisplayNameFor(model => model.gioitinh)</th>
+                                <th> @Html.DisplayNameFor(model => model.ngaysinh)</th>
+                                <th> @Html.DisplayNameFor(model => model.anhsv) </th>
+                                <th>@Html.DisplayNameFor(model => model.diachi)</th>
+                                <th>@Html.DisplayNameFor(model => model.malop)</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var (item, index) in Model.Select((item, index) => (item, index + 1)))
+                            {
+                                <tr>
+                                    <td>
+                                        @index
+                                    </td>
+                                    <td> @Html.DisplayFor(modelItem => item.masv) </td>
+                                    <td> @Html.DisplayFor(modelItem => item.hosv)</td>
+                                    <td> @Html.DisplayFor(modelItem => item.tensv)</td>
+                                    <td>
+                                        @if (item.gioitinh == 1)
+                                        {
+                                            <span>Nữ</span>
+                                        }
+                                        else if (item.gioitinh == 0)
+                                        {
+                                            <span>Nam</span>
+                                        }
+                                    </td>
+                                    <td>@item.ngaysinh.ToString("dd/MM/yyyy")</td>
+                                    <td>
+                                        @Html.DisplayFor(model => item.anhsv)
+                                    </td>
+                                    <td> @Html.DisplayFor(modelItem => item.diachi)</td>
+                                    <td> @Html.DisplayFor(modelItem => item.malop)</td>
+
+                                    <td>
+                                        <a href=" @Url.Action("Details","sinhvien", new { id = item.masv })" class="btn-sm btn-primary">Xem chi tiết</a>
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div> <!-- /.card-footer-->
+            </div><!-- /.card -->
+        </section><!-- /.content -->
+    </div> <!-- /.content-wrapper -->
+</div><!-- ./wrapper -->

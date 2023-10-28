@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("header", required: false)
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-2 border-bottom border-info">
+        <div class="container">
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1 text-uppercase ">
+                    <li>@Html.ActionLink("Giới thiệu", "GioiThieu_SV", "sinhvien", new { area = "" }, new { @class = "text-primary mx-3 fs-5 text-decoration-none" })</li> |
+                    <li>@Html.ActionLink("Thêm mới", "Create", "sinhvien", new { area = "" }, new { @class = "text-primary mx-3 fs-5 text-decoration-none" })</li> |
+                    <li>@Html.ActionLink("Danh sách", "Index", "sinhvien", new { area = "" }, new { @class = "text-primary mx-3 fs-5 text-decoration-none" })</li> |
+                    <li>@Html.ActionLink("Tìm kiếm", "Contact", "sinhvien", new { area = "" }, new { @class = "text-primary mx-3 fs-5 text-decoration-none" })</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <aside class="container-fluid mt-2">
+        @RenderBody()
+    </aside>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("footer", required: false)
+</body>
+</html>
