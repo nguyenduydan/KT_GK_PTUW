@@ -92,15 +92,25 @@ namespace GiuaKy.Controllers
 
         //Tìm kiếm sinh viên
         public ActionResult FindID()
-        { 
-            return View(db.sinhvien.ToList());
+        {
+            var sinhvien = db.sinhvien.Include(s => s.LOPS);
+            return View(sinhvien.ToList());
         }
 
         [HttpPost]
         public ActionResult FindID(string filter)
         {
             List<SINHVIENS> listNews = db.sinhvien.Where(m => m.tensv.ToLower().Contains(filter.ToLower()) == true).ToList();
-            return View(filter);
+            if (listNews != null && listNews.Count > 0)
+            {
+                ViewBag.ListNews = listNews; // Lưu danh sách sinh viên vào ViewBag
+                return View(listNews);
+            }
+            else
+            {
+                ViewBag.Message = "Không có thông tin cần tìm.";
+                return View("FindID");
+            }
         }
 
         public ActionResult GioiThieu_SV()
