@@ -73,12 +73,9 @@
                                             @Html.DisplayFor(model => item.anhsv)
                                         </td>
                                         <td> @Html.DisplayFor(modelItem => item.diachi)</td>
-                                        <td>
-                                            
-                                        </td>
+                                        <td>@Html.DisplayFor(modelItem => item.LOPS.tenlop)</td>
                                         <td>
                                             <a href=" @Url.Action("Details","sinhvien", new { id = item.masv })" class="btn-sm btn-primary">Xem chi tiết</a>
-
                                         </td>
                                     </tr>
                                 }

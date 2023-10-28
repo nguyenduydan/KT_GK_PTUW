@@ -18,7 +18,9 @@ namespace GiuaKy.Controllers
         // GET: SINHVIEN
         public ActionResult Index()
         {
-            return View(db.sinhvien.ToList());
+            var sinhvien = db.sinhvien.Include(s => s.LOPS);
+            ViewBag.malop = new SelectList(db.lop, "malop", "tenlop");
+            return View(sinhvien.ToList());
         }
 
         // GET: SINHVIEN/Details/5
@@ -83,7 +85,7 @@ namespace GiuaKy.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.malop = new SelectList(db.lop, "malop", "tenlop");
+            ViewBag.malop = new SelectList(db.lop, "malop", "tenlop",sINHVIENS.malop);
             return View(sINHVIENS);
         }
 
