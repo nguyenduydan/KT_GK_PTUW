@@ -107,7 +107,7 @@ namespace GiuaKy.Controllers
                 results = db.sinhvien.Where(m => m.masv.Contains(filterId) && (m.hosv + " " + m.tensv).Contains(filterName)).ToList();
                 if (results.Count == 0)
                 {
-                    ViewBag.Message = "Không tìm thấy mã và tên sinh viên.";
+                    ViewBag.Message = "Không tìm thấy mã và họ tên sinh viên.";
                 }
                 ViewBag.FilterId = filterId; // Giữ lại giá trị filterId
                 ViewBag.FilterName = filterName; // Giữ lại giá trị filterName
@@ -129,13 +129,13 @@ namespace GiuaKy.Controllers
                 ViewBag.FilterName = filterName; // Giữ lại giá trị filterName
                 if (results.Count == 0)
                 {
-                    ViewBag.Message = "Không tìm thấy tên sinh viên.";
+                    ViewBag.Message = "Không tìm thấy họ và tên sinh viên.";
                 }
                 return View(results);
             }
             else
             {
-                ViewBag.Message = "Không tìm thấy thông tin.";
+                ViewBag.Message = "Vui lòng nhập thông tin.";
                 return View(db.sinhvien.ToList());
             }
         }
