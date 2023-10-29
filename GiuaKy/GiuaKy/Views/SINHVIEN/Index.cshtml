@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<GiuaKy.Models.SINHVIENS>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh sách";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section header{
@@ -42,7 +42,7 @@
                                     <th> @Html.DisplayNameFor(model => model.ngaysinh)</th>
                                     <th> @Html.DisplayNameFor(model => model.anhsv) </th>
                                     <th> @Html.DisplayNameFor(model => model.diachi)</th>
-                                    <th> @Html.DisplayNameFor(model => model.malop)</th>
+                                    <th> @Html.DisplayNameFor(model => model.malop)</th>    
                                     <th></th>
                                 </tr>
                             </thead>
@@ -76,7 +76,7 @@
                                         <td>
                                             <a href=" @Url.Action("Details","sinhvien", new { id = item.masv })" class="btn-sm btn-primary">Xem chi tiết</a>
                                         </td>
-                                    </tr>
+                                    </tr>   
                                 }
                             </tbody>
 

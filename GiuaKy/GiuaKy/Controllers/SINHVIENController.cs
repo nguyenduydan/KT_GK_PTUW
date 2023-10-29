@@ -98,20 +98,48 @@ namespace GiuaKy.Controllers
         }
 
         [HttpPost]
-        public ActionResult FindID(string filter)
+        public ActionResult FindID(string filterId, string filterName)
         {
-            List<SINHVIENS> listNews = db.sinhvien.Where(m => m.tensv.ToLower().Contains(filter.ToLower()) == true).ToList();
-            if (listNews != null && listNews.Count > 0)
+            List<SINHVIENS> results;
+
+            if (!string.IsNullOrEmpty(filterId) && !string.IsNullOrEmpty(filterName))
             {
-                ViewBag.ListNews = listNews; // Lưu danh sách sinh viên vào ViewBag
-                return View(listNews);
+                results = db.sinhvien.Where(m => m.masv.Contains(filterId) && m.tensv.Contains(filterName)).ToList();
+                if (results.Count == 0)
+                {
+                    ViewBag.Message = "Không tìm thấy mã và tên sinh viên.";
+                }
+                ViewBag.FilterId = filterId; // Giữ lại giá trị filterID
+                ViewBag.FilterName = filterName;
+                return View(results);
+            }
+            else if (!string.IsNullOrEmpty(filterId))
+            {
+                results = db.sinhvien.Where(m => m.masv.Contains(filterId)).ToList();
+                if (results.Count == 0)
+                {
+                    ViewBag.Message = "Không tìm thấy mã sinh viên.";
+                }
+                ViewBag.FilterId = filterId; // Giữ lại giá trị filterID
+                return View(results);
+            }
+            else if (!string.IsNullOrEmpty(filterName))
+            {
+                results = db.sinhvien.Where(m => m.tensv.Contains(filterName)).ToList();
+                ViewBag.FilterName = filterName; // Giữ lại giá trị filterName
+                if (results.Count == 0)
+                {
+                    ViewBag.Message = "Không tìm thấy tên sinh viên.";
+                }
+                return View(results);
             }
             else
             {
-                ViewBag.Message = "Không có thông tin cần tìm.";
-                return View("FindID");
+                ViewBag.Message = "Không tìm thấy thông tin.";
+                return View(db.sinhvien.ToList());
             }
         }
+
 
         public ActionResult GioiThieu_SV()
         {
