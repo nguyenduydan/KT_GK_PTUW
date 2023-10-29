@@ -104,13 +104,13 @@ namespace GiuaKy.Controllers
 
             if (!string.IsNullOrEmpty(filterId) && !string.IsNullOrEmpty(filterName))
             {
-                results = db.sinhvien.Where(m => m.masv.Contains(filterId) && m.tensv.Contains(filterName)).ToList();
+                results = db.sinhvien.Where(m => m.masv.Contains(filterId) && (m.hosv + " " + m.tensv).Contains(filterName)).ToList();
                 if (results.Count == 0)
                 {
                     ViewBag.Message = "Không tìm thấy mã và tên sinh viên.";
                 }
-                ViewBag.FilterId = filterId; // Giữ lại giá trị filterID
-                ViewBag.FilterName = filterName;
+                ViewBag.FilterId = filterId; // Giữ lại giá trị filterId
+                ViewBag.FilterName = filterName; // Giữ lại giá trị filterName
                 return View(results);
             }
             else if (!string.IsNullOrEmpty(filterId))
@@ -120,12 +120,12 @@ namespace GiuaKy.Controllers
                 {
                     ViewBag.Message = "Không tìm thấy mã sinh viên.";
                 }
-                ViewBag.FilterId = filterId; // Giữ lại giá trị filterID
+                ViewBag.FilterId = filterId; // Giữ lại giá trị filterId
                 return View(results);
             }
             else if (!string.IsNullOrEmpty(filterName))
             {
-                results = db.sinhvien.Where(m => m.tensv.Contains(filterName)).ToList();
+                results = db.sinhvien.Where(m => (m.hosv + " " + m.tensv).Contains(filterName)).ToList();
                 ViewBag.FilterName = filterName; // Giữ lại giá trị filterName
                 if (results.Count == 0)
                 {
