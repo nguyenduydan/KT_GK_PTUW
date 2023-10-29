@@ -23,24 +23,24 @@
 {
     <div class="wrapper">
         <!-- Main Sidebar Container -->
-        <div class="card">
+        <div class="container-fluid">
             <div class="row">
                 <div class="card-body">
                     <div class="row g-4 align-items-center justify-content-center">
                         <div class="col-md-3">
                             <div class="col-auto d-flex">
                                 <label class="col-form-label col-md-3 fw-bold me-2">Mã sinh viên</label>
-                                <input type="text"  id="searchId" name ="filterId" class="form-control rounded-1" value="@ViewBag.FilterId"/>
+                                <input type="text" id="searchId" name="filterId" class="form-control rounded-1" value="@ViewBag.FilterId" />
                             </div>
                             <br class="my-1" />
                             <div class="col-auto d-flex">
                                 <label class="col-form-label col-md-3 fw-bold me-2">Họ Tên</label>
-                                <input type="text" id="searchname" name="filterName" class="form-control rounded-1" value="@ViewBag.FilterName"/>
+                                <input type="text" id="searchname" name="filterName" class="form-control rounded-1" value="@ViewBag.FilterName" />
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="input-group justify-content-center">
+                <div class="input-group justify-content-center mt-4">
                     <button type="submit" class="btn btn-primary mx-5 rounded">Tìm kiếm</button>
                     <a href=" @Url.Action("FindID","sinhvien")" class="btn btn-primary rounded">Nhập mới</a>
                 </div>
